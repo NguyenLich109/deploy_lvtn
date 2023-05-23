@@ -22,6 +22,8 @@ import Reset from './components/profileComponents/Reset';
 import UpdatePass from './screens/updatePass';
 import RegisterAccount from './screens/registerAccount';
 import LoadingOrder from './screens/LoadingOrders';
+import axios from 'axios';
+axios.defaults.baseURL = 'https://api-lvtn.vercel.app';
 
 // path - router - user
 
