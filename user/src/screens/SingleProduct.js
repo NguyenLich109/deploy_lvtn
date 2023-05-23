@@ -269,7 +269,7 @@ const SingleProduct = ({ history, match }) => {
                                             <div className="product-baner">
                                                 <img
                                                     style={{ width: '100%' }}
-                                                    src="http://balo.giaodienwebmau.com/wp-content/uploads/2021/06/ant_index_bottom_banner_big_2.jpg"
+                                                    src="https://bizweb.dktcdn.net/100/343/358/themes/868565/assets/slider_5.jpg?1675389062507"
                                                     alt=""
                                                 ></img>
                                             </div>
