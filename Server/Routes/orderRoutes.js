@@ -95,7 +95,7 @@ orderRouter.post(
             'Thanh toán điện tự với Balostore',
             `${money}`,
             `${process.env.URL_CLIENT}/loadingOrder/${id}`,
-            `https://api-lvtn-git-main-vanlong789.vercel.app/api/orders/${id}/notificationPay`,
+            `https://api-lvtn.vercel.app/api/orders/${id}/notificationPay`,
         );
         const config = {
             headers: {
