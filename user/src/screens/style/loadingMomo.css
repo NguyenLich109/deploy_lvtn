@@ -1,0 +1,17 @@
+.paymomo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: #9a929266;
+}
+.paymomo-loading {
+    margin: 20% auto;
+}
+.paymomo-loading span {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}

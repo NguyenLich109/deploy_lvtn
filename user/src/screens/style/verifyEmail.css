@@ -1,0 +1,45 @@
+/* Verified email */
+.verified__email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white-color);
+    padding: 30px 20px;
+    width: 55%;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    box-shadow: 0 0 6px 0 #ccc;
+    border-radius: 8px;
+}
+
+.verified__email-logo {
+    display: flex;
+    align-items: center;
+}
+.verified__email-logo-img {
+    display: flex;
+    justify-content: center;
+}
+
+.verified__email-img {
+    margin-left: 40px;
+    width: 100%;
+    height: 75px;
+}
+
+.verified__email-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+}
+
+.verified__email-content-title {
+    display: flex;
+    justify-content: center;
+}
+
+.toEmail {
+    margin: 8px 0;
+    text-align: center;
+}
