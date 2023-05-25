@@ -61,7 +61,7 @@ const Orders = (props) => {
             dispatch({ type: USER_DISABLED_RESET });
         }
         if (errorDisabled) {
-            toast.error('Tài khoản này bạn đã khóa rồi', ToastObjects);
+            toast.error('Tài khoản này bạn đã khóa rồi.', ToastObjects);
             dispatch({ type: USER_DISABLED_RESET });
         }
     }, [successDisbled, errorDisabled, dispatch]);
