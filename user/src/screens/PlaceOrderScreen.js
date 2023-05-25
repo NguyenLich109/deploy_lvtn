@@ -85,7 +85,7 @@ const PlaceOrderScreen = ({ history, match }) => {
             .toFixed(0),
     );
     cart.shippingPrice = addDecimals(cart.itemsPrice > 0 ? (cart.itemsPrice > 100 ? 30000 : 20) : 0);
-    cart.taxPrice = addDecimals(Number((0.05 * cart.itemsPrice).toFixed(0)));
+    cart.taxPrice = addDecimals(Number((0 * cart.itemsPrice).toFixed(0)));
     cart.discountPrice = discount ? discount?.priceDiscount : 0;
     cart.totalPrice =
         cart?.cartItems.length > 0
@@ -325,26 +325,15 @@ const PlaceOrderScreen = ({ history, match }) => {
                                     </td>
                                     <td>{Number(cart?.itemsPrice)?.toLocaleString('de-DE')}đ</td>
                                     <td>
-                                        <strong>Thuế:</strong>
-                                    </td>
-                                    <td>{Number(cart?.taxPrice)?.toLocaleString('de-DE')}đ</td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         <strong>Phí vận chuyển:</strong>
                                     </td>
                                     <td>{Number(cart?.shippingPrice)?.toLocaleString('de-DE')}đ</td>
-
+                                </tr>
+                                <tr>
                                     <td>
                                         <strong>Mã giảm giá:</strong>
                                     </td>
                                     <td>-{cart?.discountPrice?.toLocaleString('de-DE')}đ</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong></strong>
-                                    </td>
-                                    <td></td>
                                     <td>
                                         <strong>Tổng tiền:</strong>
                                     </td>
@@ -380,7 +369,7 @@ const PlaceOrderScreen = ({ history, match }) => {
                                 )}
                             </div>
                         ) : (
-                            <div className="d-flex align-self-center" style={{ margin: '38px 0' }}>
+                            <div className="d-flex align-self-center" style={{ margin: '20px 0' }}>
                                 <button
                                     className="btn btn-primary"
                                     onClick={() => setCheckBoolean(true)}

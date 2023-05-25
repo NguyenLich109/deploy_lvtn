@@ -687,14 +687,6 @@ const OrderScreen = ({ match }) => {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <strong className="fs-6">Thuế</strong>
-                                            </td>
-                                            <td className="fs-6">
-                                                {Number(order?.taxPrice)?.toLocaleString('de-DE')}đ
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
                                                 <strong className="fs-6">Tổng tiền</strong>
                                             </td>
                                             <td className="fs-6">

@@ -101,14 +101,6 @@ export default memo(function OrderDeceiveDetailProducts(props) {
                             </dl>
                             <dl className="dlist">
                                 <dt className="fs-6" style={{ fontWeight: '600' }}>
-                                    Thuế:
-                                </dt>{' '}
-                                <dd className="fs-6" style={{ fontWeight: '600' }}>
-                                    {Number(order.taxPrice)?.toLocaleString('de-DE')}đ
-                                </dd>
-                            </dl>
-                            <dl className="dlist">
-                                <dt className="fs-6" style={{ fontWeight: '600' }}>
                                     Tổng cộng:
                                 </dt>
                                 <dd className="fs-5" style={{ fontWeight: '600' }}>
