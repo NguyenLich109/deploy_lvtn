@@ -144,7 +144,12 @@ const OrderDetailProducts = (props) => {
                                         ) : order?.receive ? (
                                             <span className="badge alert-success">Đã nhận hàng</span>
                                         ) : order?.errorPaid && order?.waitConfirmation && order?.isDelivered ? (
-                                            <span className="badge alert-danger">Giao hàng thất bại</span>
+                                            <span className="badge alert-danger">
+                                                {' '}
+                                                {order?.isPaid
+                                                    ? 'Đã thanh toán (giao thất bại)'
+                                                    : ' Giao hàng thất bại'}
+                                            </span>
                                         ) : order?.waitConfirmation && order?.isDelivered && order?.isPaid ? (
                                             <span className="badge alert-success">
                                                 Đã thanh toán {order?.isDelivered ? '(đang giao)' : ''}

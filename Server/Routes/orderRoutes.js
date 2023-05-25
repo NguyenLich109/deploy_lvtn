@@ -902,7 +902,10 @@ orderRouter.post(
                             : value.waitConfirmation && value.isDelivered && value.isPaid
                             ? ((status = 'Đã thanh toán'), (time2 = new Date(value.paidAt).toLocaleString()))
                             : value.errorPaid && value.waitConfirmation && value.isDelivered
-                            ? ((status = 'Giao hàng thất bại'), (time2 = new Date(value.errorPaidAt).toLocaleString()))
+                            ? (value.isPaid
+                                  ? (status = 'Đã thanh toán (giao thất bại)')
+                                  : (status = ' Giao hàng thất bại'),
+                              (time2 = new Date(value.errorPaidAt).toLocaleString()))
                             : value.waitConfirmation && value.isDelivered
                             ? ((status = 'Đang giao'), (time2 = new Date(value.deliveredAt).toLocaleString()))
                             : value.waitConfirmation

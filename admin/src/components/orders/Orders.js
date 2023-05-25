@@ -213,29 +213,21 @@ const Orders = (props) => {
                                     <td>{order.email}</td>
                                     <td>{Number(order?.totalPrice)?.toLocaleString('de-DE')}đ</td>
                                     <td>
-                                        {order.isPaid ? (
+                                        {
                                             <span className="badge rounded-pill alert-success">
                                                 Thanh toán{' '}
                                                 {order?.paymentMethod === 'payment-with-online'
                                                     ? 'điện tử'
                                                     : 'tiền mặt'}{' '}
-                                                {moment(order?.paidAt).hours()}
-                                                {':'}
-                                                {moment(order?.paidAt).minutes() < 10
-                                                    ? `0${moment(order?.paidAt).minutes()}`
-                                                    : moment(order?.paidAt).minutes()}{' '}
-                                                {moment(order?.paidAt).format('DD/MM/YYYY')}{' '}
+                                                {order?.isPaid && moment(order?.paidAt).hours()}
+                                                {order?.isPaid && ':'}
+                                                {order?.isPaid &&
+                                                    (moment(order?.paidAt).minutes() < 10
+                                                        ? `0${moment(order?.paidAt).minutes()}`
+                                                        : moment(order?.paidAt).minutes())}{' '}
+                                                {order?.isPaid && moment(order?.paidAt).format('DD/MM/YYYY')}{' '}
                                             </span>
-                                        ) : order?.errorPaid ? (
-                                            <span className="badge rounded-pill alert-danger">Giao hàng thất bại</span>
-                                        ) : (
-                                            <span className="badge rounded-pill alert-danger">
-                                                Chờ thanh toán{' '}
-                                                {order?.paymentMethod === 'payment-with-online'
-                                                    ? 'điện tử'
-                                                    : 'tiền mặt'}{' '}
-                                            </span>
-                                        )}
+                                        }
                                     </td>
                                     <td className="badge rounded-pill alert-success">
                                         {moment(order?.createdAt).hours()}
@@ -282,7 +274,10 @@ const Orders = (props) => {
                                                 </span>
                                             ) : order?.errorPaid && order?.waitConfirmation && order?.isDelivered ? (
                                                 <span className="badge alert-danger">
-                                                    Giao hàng thất bại {moment(order?.errorPaidAt).hours()}
+                                                    {order?.isPaid
+                                                        ? 'Đã thanh toán (giao thất bại)'
+                                                        : ' Giao hàng thất bại'}{' '}
+                                                    {moment(order?.errorPaidAt).hours()}
                                                     {':'}
                                                     {moment(order?.errorPaidAt).minutes() < 10
                                                         ? `0${moment(order?.errorPaidAt).minutes()}`
