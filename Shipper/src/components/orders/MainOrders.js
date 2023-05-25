@@ -92,24 +92,21 @@ const MainOrders = (props) => {
                                     <td>{order.phone}</td>
                                     <td>{Number(order?.totalPrice)?.toLocaleString('de-DE')}đ</td>
                                     <td>
-                                        {order.isPaid ? (
+                                        {
                                             <span className="badge rounded-pill alert-success">
                                                 Thanh toán{' '}
                                                 {order?.paymentMethod === 'payment-with-online'
                                                     ? 'điện tử'
                                                     : 'tiền mặt'}{' '}
-                                                {moment(order?.paidAt).hours()}
-                                                {':'}
-                                                {moment(order?.paidAt).minutes() < 10
-                                                    ? `0${moment(order?.paidAt).minutes()}`
-                                                    : moment(order?.paidAt).minutes()}{' '}
-                                                {moment(order?.paidAt).format('DD/MM/YYYY')}{' '}
+                                                {order?.isPaid && moment(order?.paidAt).hours()}
+                                                {order?.isPaid && ':'}
+                                                {order?.isPaid &&
+                                                    (moment(order?.paidAt).minutes() < 10
+                                                        ? `0${moment(order?.paidAt).minutes()}`
+                                                        : moment(order?.paidAt).minutes())}{' '}
+                                                {order?.isPaid && moment(order?.paidAt).format('DD/MM/YYYY')}{' '}
                                             </span>
-                                        ) : order.errorPaid ? (
-                                            <span className="badge rounded-pill alert-danger">Giao hàng thất bại</span>
-                                        ) : (
-                                            <span className="badge rounded-pill alert-danger">Chờ thanh toán</span>
-                                        )}
+                                        }
                                     </td>
                                     <td className="badge rounded-pill alert-success">
                                         {moment(order?.createdAt).hours()}
@@ -122,12 +119,17 @@ const MainOrders = (props) => {
                                     <td>
                                         {order?.receive ? (
                                             <span className="badge rounded-pill alert-success">Đã nhận hàng</span>
+                                        ) : order.errorPaid ? (
+                                            <span className="badge alert-danger">
+                                                {' '}
+                                                {order?.isPaid
+                                                    ? 'Đã thanh toán (giao thất bại)'
+                                                    : ' Giao hàng thất bại'}
+                                            </span>
                                         ) : order?.isDelivered && order?.isPaid ? (
                                             <span className="badge rounded-pill alert-success">Đã thanh toán</span>
-                                        ) : order?.isDelivered && !order.errorPaid ? (
-                                            <span className="badge alert-success">Đang giao</span>
                                         ) : (
-                                            <span className="badge alert-danger">Giao hàng thất bại</span>
+                                            order?.isDelivered && <span className="badge alert-success">Đang giao</span>
                                         )}
                                     </td>
                                     <td className="d-flex justify-content-end align-item-center">

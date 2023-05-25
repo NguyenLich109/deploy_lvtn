@@ -347,20 +347,20 @@ const OrderScreen = ({ match }) => {
                                                 <div
                                                     className="cutoms-css"
                                                     style={
-                                                        order?.isPaid
-                                                            ? { border: '3px solid #2DC258' }
-                                                            : order?.errorPaid
+                                                        order?.errorPaid
                                                             ? { border: '3px solid #c1270a' }
+                                                            : order?.isPaid
+                                                            ? { border: '3px solid #2DC258' }
                                                             : {}
                                                     }
                                                 >
                                                     <i
                                                         class="fas fa-money-bill-alt"
                                                         style={
-                                                            order?.isPaid
-                                                                ? { color: '#2DC258' }
-                                                                : order?.errorPaid
+                                                            order?.errorPaid
                                                                 ? { color: '#c1270a' }
+                                                                : order?.isPaid
+                                                                ? { color: '#2DC258' }
                                                                 : {}
                                                         }
                                                     ></i>
@@ -390,6 +390,31 @@ const OrderScreen = ({ match }) => {
                                                             {moment(order?.receiveAt).format('DD/MM/YYYY')}{' '}
                                                         </span>
                                                     </>
+                                                ) : order?.errorPaid ? (
+                                                    <>
+                                                        <p
+                                                            className="text-center text-font"
+                                                            style={{ color: 'red', fontWeight: '600' }}
+                                                        >
+                                                            {order?.isPaid
+                                                                ? 'Đã thanh toán (giao thất bại)'
+                                                                : ' Giao hàng thất bại'}
+                                                        </p>
+                                                        <span
+                                                            style={{
+                                                                fontSize: '13px',
+                                                                color: 'red',
+                                                                fontWeight: '600',
+                                                            }}
+                                                        >
+                                                            {moment(order?.errorPaidAt).hours()}
+                                                            {':'}
+                                                            {moment(order?.errorPaidAt).minutes() < 10
+                                                                ? `0${moment(order?.errorPaidAt).minutes()}`
+                                                                : moment(order?.errorPaidAt).minutes()}{' '}
+                                                            {moment(order?.errorPaidAt).format('DD/MM/YYYY')}{' '}
+                                                        </span>
+                                                    </>
                                                 ) : order?.isPaid ? (
                                                     <>
                                                         <p
@@ -412,29 +437,6 @@ const OrderScreen = ({ match }) => {
                                                                 ? `0${moment(order?.paidAt).minutes()}`
                                                                 : moment(order?.paidAt).minutes()}{' '}
                                                             {moment(order?.paidAt).format('DD/MM/YYYY')}{' '}
-                                                        </span>
-                                                    </>
-                                                ) : order?.errorPaid ? (
-                                                    <>
-                                                        <p
-                                                            className="text-center text-font"
-                                                            style={{ color: 'red', fontWeight: '600' }}
-                                                        >
-                                                            Giao hàng thất bại
-                                                        </p>
-                                                        <span
-                                                            style={{
-                                                                fontSize: '13px',
-                                                                color: 'red',
-                                                                fontWeight: '600',
-                                                            }}
-                                                        >
-                                                            {moment(order?.errorPaidAt).hours()}
-                                                            {':'}
-                                                            {moment(order?.errorPaidAt).minutes() < 10
-                                                                ? `0${moment(order?.errorPaidAt).minutes()}`
-                                                                : moment(order?.errorPaidAt).minutes()}{' '}
-                                                            {moment(order?.errorPaidAt).format('DD/MM/YYYY')}{' '}
                                                         </span>
                                                     </>
                                                 ) : (
@@ -683,14 +685,6 @@ const OrderScreen = ({ match }) => {
                                             </td>
                                             <td className="fs-6">
                                                 {Number(order?.shippingPrice)?.toLocaleString('de-DE')}đ
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong className="fs-6">Thuế</strong>
-                                            </td>
-                                            <td className="fs-6">
-                                                {Number(order?.taxPrice)?.toLocaleString('de-DE')}đ
                                             </td>
                                         </tr>
                                         <tr>

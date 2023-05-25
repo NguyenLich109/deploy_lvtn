@@ -95,7 +95,9 @@ const Orders = (props) => {
                                                             className="fs-6 text-danger"
                                                             style={{ fontWeight: '600' }}
                                                         >
-                                                            Giao hàng thất bại
+                                                            {order?.isPaid
+                                                                ? 'Đã thanh toán (giao thất bại)'
+                                                                : ' Giao hàng thất bại'}
                                                         </span>
                                                     ) : order?.waitConfirmation &&
                                                       order?.isDelivered &&

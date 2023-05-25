@@ -101,14 +101,6 @@ export default memo(function OrderDeceiveDetailProducts(props) {
                             </dl>
                             <dl className="dlist">
                                 <dt className="fs-6" style={{ fontWeight: '600' }}>
-                                    Thuế:
-                                </dt>{' '}
-                                <dd className="fs-6" style={{ fontWeight: '600' }}>
-                                    {Number(order.taxPrice)?.toLocaleString('de-DE')}đ
-                                </dd>
-                            </dl>
-                            <dl className="dlist">
-                                <dt className="fs-6" style={{ fontWeight: '600' }}>
                                     Tổng cộng:
                                 </dt>
                                 <dd className="fs-5" style={{ fontWeight: '600' }}>
@@ -123,7 +115,10 @@ export default memo(function OrderDeceiveDetailProducts(props) {
                                     {order?.receive ? (
                                         <span className="badge alert-success">Đã nhận hàng</span>
                                     ) : order?.isDelivered && order.errorPaid ? (
-                                        <span className="badge alert-danger">Giao hàng thất bại</span>
+                                        <span className="badge alert-danger">
+                                            {' '}
+                                            {order?.isPaid ? 'Đã thanh toán (giao thất bại)' : ' Giao hàng thất bại'}
+                                        </span>
                                     ) : order?.isDelivered && order?.isPaid ? (
                                         <span className="badge rounded-pill alert-success">
                                             Đã thanh toán {order?.isDelivered ? '(đang giao)' : ''}
