@@ -78,15 +78,10 @@ const Header = (props) => {
         }
     }, [user]);
 
-    function avatarUser() {
-        const stringUser = userInfo.name;
-        const value = stringUser.slice(0, 1);
-        return value;
-    }
     // xư lý lấy 1 phần kí tự từ chuổi username khi trả dữ liệu ra màn hình
     function notiUser() {
         let returnUser;
-        const valueUser = userInfo.name;
+        const valueUser = user.name;
         if (valueUser?.length > 15) {
             const arrayUser = valueUser.split(' ');
             returnUser = arrayUser[0];
@@ -166,7 +161,7 @@ const Header = (props) => {
                                     </div>
                                     {navbar && <NavBar onRemove={removeNavBar}></NavBar>}
                                     <div className="col-6 d-flex align-items-center justify-content-end Login-Register">
-                                        {userInfo ? (
+                                        {user ? (
                                             <div className="btn-group">
                                                 <button
                                                     type="button"
@@ -297,7 +292,7 @@ const Header = (props) => {
                                     <NavBar></NavBar>
                                 </div>
                                 <div className="col-md-4 d-flex align-items-center justify-content-end Login-Register">
-                                    {userInfo ? (
+                                    {user ? (
                                         <div className="btn-group">
                                             <button
                                                 type="button"
@@ -308,9 +303,9 @@ const Header = (props) => {
                                             >
                                                 <img
                                                     src={`/${
-                                                        userInfo?.image === undefined
+                                                        user?.image === undefined
                                                             ? 'images/user.png'
-                                                            : `userProfile/${userInfo?.image}`
+                                                            : `userProfile/${user?.image}`
                                                     }`} // upload ảnh
                                                     alt=""
                                                     style={{
