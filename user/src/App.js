@@ -22,7 +22,6 @@ import Reset from './components/profileComponents/Reset';
 import UpdatePass from './screens/updatePass';
 import RegisterAccount from './screens/registerAccount';
 import LoadingOrder from './screens/LoadingOrders';
-import url from './Sitemap';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api-lvtn.vercel.app';
 
@@ -72,7 +71,6 @@ const App = () => {
                 <PrivateRouter path="/placeorder/:payment" component={PlaceOrderScreen} />
                 <PrivateRouter path="/order/:id" component={OrderScreen} />
                 <PrivateRouter path="/loadingOrder/:id" component={LoadingOrder} />
-                <Route path="/sitemap.xml" component={url} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </Router>
